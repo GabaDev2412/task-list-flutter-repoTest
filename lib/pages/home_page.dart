@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../utils/task_provider.dart'; // Importe o TaskProvider
+import '../utils/task_provider.dart';
 import '../utils/theme_provider.dart';
 import '../utils/constants.dart';
 import '../styles/themes_utils.dart';
-import '../widgets/list_task.dart'; // Importe o widget ListTask
+import '../widgets/list_task.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,8 +32,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final primaryColor = getPrimaryColor(context);
-    final onPrimaryColor = getOnPrimaryColor(context);
     final onPrimaryContainer = getOnPrimaryContainer(context);
+    final onSecondaryContainer = getOnSecondaryContainer(context);
     final secondary = getSecondary(context);
     final onSurface = getOnSurface(context);
 
@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.grey[300],
+                  color: onPrimaryContainer,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(15.0),
                     topRight: Radius.circular(15.0),
@@ -94,19 +94,19 @@ class _HomePageState extends State<HomePage> {
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
-                            borderSide: BorderSide(color: Colors.red, width: 2),
+                            borderSide: BorderSide(color: secondary, width: 2),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
-                            borderSide: BorderSide(color: Colors.red, width: 2),
+                            borderSide: BorderSide(color: secondary, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.red, width: 2),
+                            borderSide: BorderSide(color: secondary, width: 2),
                             borderRadius: BorderRadius.circular(15.0),
                           ),
                           hintText: 'Enter a task',
                         ),
-                        cursorColor: Colors.red,
+                        cursorColor: secondary,
                         onSubmitted: (value) {
                           if (value.isNotEmpty) {
                             Provider.of<TaskProvider>(context, listen: false).addTask(value);
@@ -117,8 +117,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(width: 10),
                     FloatingActionButton(
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white,
+                      backgroundColor: secondary,
+                      foregroundColor: onSecondaryContainer,
                       onPressed: () {
                         final text = _controller.text.trim();
                         if (text.isNotEmpty) {

@@ -20,6 +20,11 @@ Color getSecondary(BuildContext context) {
   return theme.colorScheme.secondary;
 }
 
+Color getOnSecondaryContainer(BuildContext context) {
+  final theme = Theme.of(context);
+  return theme.colorScheme.onSecondaryContainer;
+}
+
 Color getOnSurface(BuildContext context) {
   final theme = Theme.of(context);
   return theme.colorScheme.onSurface;

@@ -1,7 +1,5 @@
-// list_task.dart
-
 import 'package:flutter/material.dart';
-import 'task_item.dart'; // Importe o widget TaskItem
+import 'task_item.dart';
 
 class ListTask extends StatelessWidget {
   final List<Map<String, dynamic>> tasks;

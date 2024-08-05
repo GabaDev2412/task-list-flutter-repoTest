@@ -1,6 +1,6 @@
-// task_item.dart
-
 import 'package:flutter/material.dart';
+import '../styles/themes_utils.dart';
+import '../utils/theme_provider.dart';
 
 class TaskItem extends StatelessWidget {
   final String title;
@@ -18,16 +18,19 @@ class TaskItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final onSecondaryContainer = getOnSecondaryContainer(context);
+    final secondary = getSecondary(context);
+
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
-        side: const BorderSide(color: Colors.red, width: 2),
+        side: BorderSide(color: secondary, width: 2),
       ),
       child: Row(
         children: [
           Checkbox(
-            activeColor: Colors.white,
-            checkColor: Colors.red,
+            activeColor: onSecondaryContainer,
+            checkColor: secondary,
             value: isCompleted,
             onChanged: (_) => onToggleComplete(),
           ),
@@ -36,7 +39,7 @@ class TaskItem extends StatelessWidget {
               title,
               style: TextStyle(
                 decoration: isCompleted ? TextDecoration.lineThrough : null,
-                decorationColor: Colors.red,
+                decorationColor: secondary,
                 decorationThickness: 3,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
