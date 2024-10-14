@@ -1,7 +1,5 @@
 # Task App
 
-**Descrição:** Projeto Flutter simples de um aplicativo de lista de tarefas proposto pelo Codigo Certo para trilha mobile.
-
 ### Desafio proposto ao app
 
 1. **Tela Inicial:**
